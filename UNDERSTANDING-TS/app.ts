@@ -19,8 +19,8 @@
 // const READ_ONLY =1;
 // const AUTHOR=2;
 
-enum Role { ADMIN, READ_ONLY, AUTHOR };
-//^this is an enum, which assigns labels to numbers in an object
+enum Role { ADMIN = 5, READ_ONLY = 100, AUTHOR = 'TOLKIEN'};
+//^this is an enum, which assigns labels to numbers in an object. enum is great when you need identifiers that are human readable and has some mapped value
 
 const person = {
     name: 'Maximilian',
