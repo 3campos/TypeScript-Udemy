@@ -10,9 +10,12 @@ function add (n1: number, n2: number, showResult: boolean, phrase: string) {
     }
 }
 
-const number1 = 5;
+let number1: number;
+number1 = 5;
 const number2 = 2.8;
 const printResult = true;
-const resultPhrase = 'Result is: ';
+let resultPhrase = 'Result is: ';
+//when you initialize a variable with a string, like for resultPhrase on the above line, typescript treats it as assigning a "string" type. Thus, writing resultPhrase = 0 below will throw an error because typescript expects a string.
+// resultPhrase = 0;
 
 add(number1, number2, printResult, resultPhrase)
