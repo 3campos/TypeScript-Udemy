@@ -1,21 +1,19 @@
-function add (n1: number, n2: number, showResult: boolean, phrase: string) {
-    // if (typeof n1 !== 'number' || typeof n2 !== 'number'){
-    //     throw new Error ('Incorrect input!')
-    // }
-    const result = n1 + n2;
-    if(showResult){
-        console.log(phrase + result);
-    } else {
-        return result;
-    }
+// const person: {
+//     name: string;
+//     age: number;
+// } = {
+const person = {
+    name: 'Maximilian',
+    age: 30,
+    hobbies: ['Sports', 'Cooking']
+};
+
+let favoriteActivities: string[];
+//string[], conveys that we want to return an array with a specific type, i.e., strings
+//use any[] to have a mixed types array
+
+console.log(person.name)
+
+for(const hobby of person.hobbies) {
+    console.log(hobby)
 }
-
-let number1: number;
-number1 = 5;
-const number2 = 2.8;
-const printResult = true;
-let resultPhrase = 'Result is: ';
-//when you initialize a variable with a string, like for resultPhrase on the above line, typescript treats it as assigning a "string" type. Thus, writing resultPhrase = 0 below will throw an error because typescript expects a string.
-// resultPhrase = 0;
-
-add(number1, number2, printResult, resultPhrase)
