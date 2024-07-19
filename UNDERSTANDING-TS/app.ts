@@ -7,6 +7,12 @@ function printResult(num: number){
 }
 //this function has a return type of "void", i.e., it doesn't return anything
 
+function addAndHandle(n1: number, n2: number, cb: (num: number) => void) {
+    //assigning a void type to the cb function does not prohibit you from returning anything. It just tells you that anything returned by the cb function will not be used by the addAndHandle function.
+    const result = n1 + n2;
+    cb(result);
+}
+
 printResult(add(5,12))
 
 function printResult2(num: number): undefined{
@@ -24,3 +30,7 @@ combineValues = add;
 // combineValues = 5;
 
 console.log(combineValues(8,8))
+
+addAndHandle(10, 20, (result) => {
+    console.log(result);
+});
