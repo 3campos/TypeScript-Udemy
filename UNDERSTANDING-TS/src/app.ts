@@ -1,7 +1,7 @@
 const userName = 'Max';
 
-let age = 30;
-age = 29;
+// let age = 30;
+// age = 29;
 
 // function add(a: number, b: number){
 //     let result;
@@ -39,7 +39,7 @@ activeHobbies.push(...hobbies);
 // (2) using the push method in combination with the spread operator that references the array you want to obtain elements from
 
 const person = {
-    name: 'Max',
+    firstName: 'Emilio',
     age: 30
 };
 
@@ -55,3 +55,12 @@ const add = (...numbers: number[]) => {
 
 const addedNumbers = add(5, 10, 2, 3.7)
 console.log(addedNumbers)
+
+const [hobby1, hobby2, ...remainingHobbies] = hobbies;
+//array destructuring works by pulling elements out of an array based on their positioning, so, you can name each targeted element as you see fit like I've done here: hobby1, hobby2.
+console.log(hobbies, hobby1, hobby2);
+
+const {firstName, age} = person;
+//object destructuring works by pulling elements out of an object by their key name, not by their positioning. However, you can used a JavaScript-based override to override the key by adding a colon, like so: "firstName: userName"
+
+console.log(firstName, age , person)
