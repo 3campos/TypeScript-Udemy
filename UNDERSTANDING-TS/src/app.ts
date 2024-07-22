@@ -29,3 +29,19 @@ if (button){
 }
 
 printOutput(add(5));
+
+const hobbies = ['Sports', 'Cooking'];
+const activeHobbies = ['Hiking', ...hobbies]
+
+activeHobbies.push(...hobbies);
+// you can use the spread operator to add the individually listed elements of an array to another array by:
+// (1) adding the spread operator within another array like on line 34
+// (2) using the push method in combination with the spread operator that references the array you want to obtain elements from
+
+const person = {
+    name: 'Max',
+    age: 30
+};
+
+const copiedPerson = { ...person };
+//the spread operator can also be used to add a list of key-value pairs from one object to another
