@@ -1,5 +1,6 @@
 class Department {
     name: string;
+    private employees: string[] = [];
 
     constructor(n: string){
         this.name = n;
@@ -10,12 +11,23 @@ class Department {
         console.log('Department' + this.name);
         //what "this" in this.name is doing: when describe is executed, "this" refers to an instance that is based on the department class.
     }
+    addEmployee(employee:string){
+        this.employees.push(employee);
+    }
+    printEmployeeInformation(){
+        console.log(this.employees.length)
+        console.log(this.employees)
+    }
 }
 
 const accounting = new Department('Accounting');
 //this will create a JavaScript object
 
-accounting.describe()
+accounting.addEmployee('max');
+accounting.addEmployee('emilio');
+
+accounting.describe();
+accounting.printEmployeeInformation();
 
 // const accountingCopy = {describe: accounting.describe}
 
