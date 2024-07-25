@@ -1,14 +1,18 @@
 class Department {
-    name: string;
+    // private id: string;
+    // private name: string;
     private employees: string[] = [];
+    //private (verbiage: "making employees a private property") entails that a method or property can only be modified by calling on a function or method contained within the class. This prevents the manipulation of objects by direct assignment, for example.
 
-    constructor(n: string){
-        this.name = n;
+    constructor(private id: string, public name: string){
+        // ^shorthand initialization
+        // this.id = id;
+        // this.name = n;
     }
     //constructor is a reserved keyword
     //this is a function tied to this class and to any object you create from this class that will be executed when the object is created.
     describe(this: Department){
-        console.log('Department' + this.name);
+        console.log(`Department(${this.id}): ${this.name}`);
         //what "this" in this.name is doing: when describe is executed, "this" refers to an instance that is based on the department class.
     }
     addEmployee(employee:string){
@@ -20,7 +24,7 @@ class Department {
     }
 }
 
-const accounting = new Department('Accounting');
+const accounting = new Department('d1', 'Accounting');
 //this will create a JavaScript object
 
 accounting.addEmployee('max');
