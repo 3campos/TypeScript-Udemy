@@ -4,7 +4,7 @@ class Department {
     private employees: string[] = [];
     //private (verbiage: "making employees a private property") entails that a method or property can only be modified by calling on a function or method contained within the class. This prevents the manipulation of objects by direct assignment, for example.
 
-    constructor(private id: string, public name: string){
+    constructor(private readonly id: string, public name: string){
         // ^shorthand initialization
         // this.id = id;
         // this.name = n;
