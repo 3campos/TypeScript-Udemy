@@ -5,7 +5,7 @@ class Department {
     //private (verbiage: "making employees a private property") entails that a method or property can only be modified by calling on a function or method contained within the class. This prevents the manipulation of objects by direct assignment, for example.
 
     constructor(private readonly id: string, public name: string){
-        // ^shorthand initialization
+        // ^shorthand initialization for fields
         // this.id = id;
         // this.name = n;
     }
@@ -24,15 +24,46 @@ class Department {
     }
 }
 
-const accounting = new Department('d1', 'Accounting');
+class ITDepartment extends Department {
+    admins: string[];
+    constructor(id: string, admins: string[]) {
+        super(id, 'IT');
+        this.admins = admins;
+    }
+}
+//you can only inherit from one class
+//you have to use "super" whenever you add a constructor to a class that inherits from another class
+
+const it = new ITDepartment('d1', ['Emilio']);
 //this will create a JavaScript object
 
-accounting.addEmployee('max');
-accounting.addEmployee('emilio');
+it.addEmployee('max');
+it.addEmployee('emilio');
 
-accounting.describe();
-accounting.printEmployeeInformation();
+it.describe();
+it.printEmployeeInformation();
 
-// const accountingCopy = {describe: accounting.describe}
+// const itCopy = {describe: it.describe}
 
-// accountingCopy.describe()
+console.log(it);
+
+// itCopy.describe()
+
+class AccountingDepartment extends Department{
+    constructor(id: string, private reports: string[]) {
+        super(id, 'Accounting');
+    }
+    addReport(text: string){
+        this.reports.push(text);
+    }
+
+    printReports(){
+        console.log(this.reports)
+    }
+}
+
+const accounting = new AccountingDepartment('d2', []);
+
+accounting.addReport('Something went wrong');
+
+accounting.printReports()
