@@ -1,4 +1,7 @@
 class Department {
+    static fiscalYear = 2020;
+    // static makes this property available without instantiating the class (Department)
+
     // private id: string;
     // private name: string;
     protected employees: string[] = [];
@@ -10,6 +13,12 @@ class Department {
         // this.name = n;
     }
     //constructor is a reserved keyword
+
+    static createEmployee(name:string){
+        return {name: name};
+    }
+    //createEmployee is a static method
+    
     //this is a function tied to this class and to any object you create from this class that will be executed when the object is created.
     describe(this: Department){
         console.log(`Department(${this.id}): ${this.name}`);
@@ -33,6 +42,9 @@ class ITDepartment extends Department {
 }
 //you can only inherit from one class
 //you have to use "super" whenever you add a constructor to a class that inherits from another class
+
+const employee1 = Department.createEmployee('new Max');
+console.log(employee1, Department.fiscalYear)
 
 const it = new ITDepartment('d1', ['Emilio']);
 //this will create a JavaScript object
