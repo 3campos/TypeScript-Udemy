@@ -8,9 +8,6 @@ class Department {
     static createEmployee(name) {
         return { name: name };
     }
-    describe() {
-        console.log(`Department(${this.id}): ${this.name}`);
-    }
     addEmployee(employee) {
         this.employees.push(employee);
     }
@@ -24,6 +21,9 @@ class ITDepartment extends Department {
     constructor(id, admins) {
         super(id, 'IT');
         this.admins = admins;
+    }
+    describe() {
+        console.log('IT department - Id:' + this.id);
     }
 }
 const employee1 = Department.createEmployee('new Max');
@@ -52,6 +52,9 @@ class AccountingDepartment extends Department {
         this.reports = reports;
         this.lastReport = reports[0];
     }
+    describe() {
+        console.log('Accounting Department - ID: ' + this.id);
+    }
     addEmployee(name) {
         if (name === 'Max') {
             return;
@@ -72,6 +75,5 @@ accounting.addReport('Something went wrong');
 console.log(accounting.mostRecentReport);
 accounting.addEmployee('Max');
 accounting.addEmployee('Emilio');
-accounting.printReports();
-accounting.printEmployeeInformation();
+accounting.describe();
 //# sourceMappingURL=app.js.map

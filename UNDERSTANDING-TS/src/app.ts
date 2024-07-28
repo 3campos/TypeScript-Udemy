@@ -1,4 +1,5 @@
-class Department {
+abstract class Department {
+    //abstract classes cannot be instantiated themselves. It's just a class that's there to be inherited from so that the inheriting classes can be instantiated and are forced to provide concrete implementations following the structure outlined in the class.
     static fiscalYear = 2020;
     // static makes this property available without instantiating the class (Department)
 
@@ -7,7 +8,7 @@ class Department {
     protected employees: string[] = [];
     //protected means that this class is available to classes that inherit this class or i.e., to classes that extend this base class. protected also means that this function is not available otherwise.
 
-    constructor(private readonly id: string, public name: string){
+    constructor(protected readonly id: string, public name: string){
         // ^shorthand initialization for fields
         // this.id = id;
         // this.name = n;
@@ -20,10 +21,10 @@ class Department {
     //createEmployee is a static method
     
     //this is a function tied to this class and to any object you create from this class that will be executed when the object is created.
-    describe(this: Department){
-        console.log(`Department(${this.id}): ${this.name}`);
-        //what "this" in this.name is doing: when describe is executed, "this" refers to an instance that is based on the department class.
-    }
+    abstract describe(this: Department): void;
+        //abstract is a keyword will force inheriting classes to add this method
+
+    
     addEmployee(employee:string){
         this.employees.push(employee);
     }
@@ -38,6 +39,9 @@ class ITDepartment extends Department {
     constructor(id: string, admins: string[]) {
         super(id, 'IT');
         this.admins = admins;
+    }
+    describe(){
+        console.log('IT department - Id:' + this.id)
     }
 }
 //you can only inherit from one class
@@ -83,6 +87,10 @@ class AccountingDepartment extends Department{
         this.lastReport = reports[0];
     }
 
+    describe(){
+        console.log('Accounting Department - ID: ' + this.id)
+    }
+
     addEmployee(name: string) {
         if(name === 'Max') {
             return;
@@ -110,5 +118,7 @@ console.log(accounting.mostRecentReport);
 accounting.addEmployee('Max');
 accounting.addEmployee('Emilio');
 
-accounting.printReports()
-accounting.printEmployeeInformation();
+// accounting.printReports()
+// accounting.printEmployeeInformation();
+
+accounting.describe();
