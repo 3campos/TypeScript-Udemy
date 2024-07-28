@@ -1,20 +1,27 @@
-interface Person {
+interface Greetable {
     name: string;
-    age: number;
     
     greet(phrase: string): void;
 }
 
-let user1: Person;
+class Person implements Greetable {
+    name: string;
+    age = 30;
 
-user1 = {
-    name: 'Emilio',
-    age: 29,
-    greet(phrase: string) {
+    constructor(n:string){
+        this.name = n;
+    }
+
+    greet(phrase: string){
         console.log(phrase + ' ' + this.name);
     }
-};
+}
+
+let user1: Greetable;
+
+user1 = new Person('Emilio')
 
 user1.greet('Hi there - I am')
+console.log(user1)
 
 //an interface is used to desccribe the structure of an object but we can only define the structure, not the concrete values. E.g., I cannot write "name: string = 'Emilio'" but I can write "name: string" in the "Person" interface.
