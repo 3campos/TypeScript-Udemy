@@ -55,6 +55,12 @@ const fetchedUserData = {
 
 console.log(fetchedUserData?.job?.title)
 
+const userInput = undefined;
+
+const storedData = userInput ?? 'DEFAULT';
+//?? = the nullish coalescing operator, which is exclusive to TypeScript. This conveys that if the value is null or undefined then we'll use the fallback. This prevents the issue of the fallback being triggered when there is a value that is considered falsy, such as a zero or empty string.
+console.log(storedData)
+
 //another type guard example: the "in" type guard
 // type UnknownEmployee = Employee | Admin;
 
