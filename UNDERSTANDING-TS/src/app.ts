@@ -82,10 +82,12 @@ const v2 = new Truck();
 
 function useVehicle(vehicle: Vehicle){
     vehicle.drive();
-    if('loadCargo' in vehicle){
+    if(vehicle instanceof Truck){
         vehicle.loadCargo(1000);
     }
 }
 
 useVehicle(v1);
 useVehicle(v2);
+
+//type guards are used to check if a property or method exists before you try to use it or if you can do something with the type before you try to do it.
