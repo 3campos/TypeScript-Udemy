@@ -91,3 +91,30 @@ useVehicle(v1);
 useVehicle(v2);
 
 //type guards are used to check if a property or method exists before you try to use it or if you can do something with the type before you try to do it.
+
+//discriminated union - a pattern which you can use when working with union types that makes implementing type guards easier. It's available when you work with object types. 
+interface Bird {
+    type: 'bird';
+    flyingSpeed: number;
+}
+
+interface Horse {
+    type: 'horse';
+    runningSpeed: number;
+}
+
+type Animal = Bird | Horse;
+
+function moveAnimal(animal: Animal){
+    let speed;
+    switch(animal.type){
+        case 'bird':
+        speed = animal.flyingSpeed;
+        break;
+        case 'horse':
+            speed = animal.runningSpeed;
+    }
+    console.log('Moving at speed: ' + speed);
+}
+
+moveAnimal({type: 'bird', flyingSpeed: 10})
