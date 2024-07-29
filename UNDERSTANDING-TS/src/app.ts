@@ -31,3 +31,14 @@ type Universal = Combinable & Numeric;
 //typescript sees that Universal is of type number
 
 //The intersection operator can be used with any types and it then builds the intersection of these types. In the case of union types, the intersection is between the types that they have in common. In the case of object types, it is the combination of the object properties of those object types.
+
+//type guards
+
+function add(a: Combinable, b: Combinable){
+    if(typeof a === 'string' || typeof b === 'string'){
+        //^this is called a typeguard using typeof
+        return a.toString() + b.toString()
+    }
+    return a + b;
+}
+
