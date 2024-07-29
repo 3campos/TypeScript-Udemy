@@ -33,12 +33,28 @@ type Universal = Combinable & Numeric;
 //The intersection operator can be used with any types and it then builds the intersection of these types. In the case of union types, the intersection is between the types that they have in common. In the case of object types, it is the combination of the object properties of those object types.
 
 //type guards
-
+//typeof type guard
 function add(a: Combinable, b: Combinable){
     if(typeof a === 'string' || typeof b === 'string'){
-        //^this is called a typeguard using typeof
+        //^this is called a type guard using typeof
         return a.toString() + b.toString()
     }
     return a + b;
 }
 
+//another type guard example: the "in" type guard
+type UnknownEmployee = Employee | Admin;
+
+function printEmployeeInformation(emp:UnknownEmployee){
+    console.log('Name: ' + emp.name);
+    if ('privileges' in emp){
+        //^this is javascript code that lets us check if privileges is a property in the employee object
+        console.log('Privileges: ' + emp.privileges);
+    }
+    if ('startDate' in emp){
+        //^this is javascript code that lets us check if startDate is a property in the employee object
+        console.log('Start Date: ' + emp.startDate);
+    }
+}
+
+printEmployeeInformation(e1);
