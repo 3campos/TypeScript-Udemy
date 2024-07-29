@@ -118,3 +118,21 @@ function moveAnimal(animal: Animal){
 }
 
 moveAnimal({type: 'bird', flyingSpeed: 10})
+
+//type casting
+//type casting helps you convey to typescript that some value is of a specific type where typescript is unable to detect it on its own
+
+// const userInputElement = <HTMLInputElement>document.getElementById('user-input')!;
+const userInputElement = document.getElementById('user-input')! as HTMLInputElement;
+//^the commented out version is not a React friendly version of type casting but the next line is React friendly.
+//the "as HTMLInputElement" ("as <type>") code is an example of type casting. Type casting signals to TypeScript that the preceding expression will yield a value of the written type. In this case, the preceding expression will yield a value for an HTMLInputElement type.
+//The "!" will convey to TypeScript the preceding expression will never yield null.
+
+userInputElement.value = "Hi there!";
+
+//alternatively written type casting when you're not sure whether the expression will not return null, you can use an if check instead of the ! operator.
+const userInputElement2 = document.getElementById('user-input');
+
+if(userInputElement2){
+    (userInputElement2 as HTMLInputElement).value = "Hi there!";
+}
