@@ -136,3 +136,17 @@ const userInputElement2 = document.getElementById('user-input');
 if(userInputElement2){
     (userInputElement2 as HTMLInputElement).value = "Hi there!";
 }
+
+//index properties example. Use index properties when you want flexibility with respect to a variety of forms of inputs, for example.
+interface ErrorContainer { // { email: 'Not a valid email', username: 'Must start with a character'}
+    [prop: string]: string;
+    //whatever object I'm constructing based on this error container interface later must have properties which are strings.
+    //using an index property like so is helpful when we don't know which property names we want to use and how many properties there will be
+    //Alternatively: every property that is added to an object that is based on the ErrorContainer interface must have a property name in the form of a string and the value of that property must be a string
+    //[prop: string] dictates the property name type or key name type
+}
+
+const errorBag: ErrorContainer = {
+    email: 'Not a valid email!',
+    username: 'Must start with a capital character'
+};
