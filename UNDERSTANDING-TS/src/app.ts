@@ -58,3 +58,34 @@ function printEmployeeInformation(emp:UnknownEmployee){
 }
 
 printEmployeeInformation(e1);
+
+//another type of type guard: the instance of type guard
+class Car {
+    drive() {
+        console.log('Driving ...');
+    }
+}
+class Truck {
+    drive() {
+        console.log('Driving a truck...');
+    }
+
+    loadCargo(amount:number){
+        console.log('Loading cargo ' + amount)
+    }
+}
+
+type Vehicle = Car | Truck;
+
+const v1 = new Car();
+const v2 = new Truck();
+
+function useVehicle(vehicle: Vehicle){
+    vehicle.drive();
+    if('loadCargo' in vehicle){
+        vehicle.loadCargo(1000);
+    }
+}
+
+useVehicle(v1);
+useVehicle(v2);
