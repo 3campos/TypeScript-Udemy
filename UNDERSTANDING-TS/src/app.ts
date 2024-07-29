@@ -1,50 +1,33 @@
-// type AddFn = (a: number, b: number) => number;
-interface AddFn {
-    (a: number, b: number): number;
-    //this is an example of an anonymous function in an interface
+//intersection types
+
+type Admin = {
+    name: string;
+    privileges: string[];
+};
+
+type Employee = {
+    name: string;
+    startDate: Date;
 }
 
-let add: AddFn;
+// interface ElevatedEmployee extends Employee, Admin {}
+//you could use instead interfaces instead of types by using the "interface" label before Admin and Employees and use an interface to extend both Employee and Admin. However this results in more code than intersection typing.
 
-add = (n1: number, n2: number) => {
-    return n1 + n2
-}
-interface Named {
-    readonly name?: string;
-    outputName?: string;
-    //the question mark symbolizes that the outputName value is optional. You can mark methods as optional using an exclamation point.
-}
+type ElevatedEmployee = Admin & Employee;
+//this is an example of an "intersection" type. An intersection type dictates that the intersection type must have the object types that it's defined with. E.g., An ElevatedEmployee object must be comprised with the properties of the Admin object type and the Employee object type.
 
-interface Greetable extends Named {    
-    greet(phrase: string): void;
-}
+const e1: ElevatedEmployee = {
+    name: 'Max',
+    privileges: ['create-server'],
+    startDate: new Date()
+};
 
-class Person implements Greetable {
-    name?: string;
-    age = 30;
+//you can also use intersection types with other types (besides object types), such as union types, like below
+type Combinable = string | number;
+type Numeric = number | boolean;
 
-    constructor(n?:string){
-        // optional parameter added with ?
-        if(n){ 
-            this.name = n;
-        }
-    }
+type Universal = Combinable & Numeric;
+//Universal is an intersection type
+//typescript sees that Universal is of type number
 
-    greet(phrase: string){
-        if(this.name){
-            console.log(phrase + ' ' + this.name);
-
-        } else {
-            console.log('Hi!');
-        }
-    }
-}
-
-let user1: Greetable;
-
-user1 = new Person()
-
-user1.greet('Hi there - I am')
-console.log(user1)
-
-//an interface is used to desccribe the structure of an object but we can only define the structure, not the concrete values. E.g., I cannot write "name: string = 'Emilio'" but I can write "name: string" in the "Person" interface.
+//The intersection operator can be used with any types and it then builds the intersection of these types. In the case of union types, the intersection is between the types that they have in common. In the case of object types, it is the combination of the object properties of those object types.
