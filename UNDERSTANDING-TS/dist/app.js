@@ -1,25 +1,18 @@
 "use strict";
-var _a;
-const e1 = {
-    name: 'Max',
-    privileges: ['create-server'],
-    startDate: new Date()
-};
-function add(a, b) {
-    if (typeof a === 'string' || typeof b === 'string') {
-        return a.toString() + b.toString();
-    }
-    return a + b;
+function merge(objA, objB) {
+    return Object.assign(objA, objB);
 }
-const result = add('Emilio', 'Test');
-result.split(' ');
-const fetchedUserData = {
-    id: 'u1',
-    name: 'Max',
-    job: { title: 'CEO', description: 'My own company' }
-};
-console.log((_a = fetchedUserData === null || fetchedUserData === void 0 ? void 0 : fetchedUserData.job) === null || _a === void 0 ? void 0 : _a.title);
-const userInput = undefined;
-const storedData = userInput !== null && userInput !== void 0 ? userInput : 'DEFAULT';
-console.log(storedData);
+const mergedObj = merge({ name: 'Emilio', hobbies: ['sports'] }, { age: 1117 });
+console.log(mergedObj.age);
+function countAndDescribe(element) {
+    let descriptionText = 'Got no value';
+    if (element.length === 1) {
+        descriptionText = 'Got 1 element';
+    }
+    else if (element.length > 1) {
+        descriptionText = 'Got ' + element.length + ' elements.';
+    }
+    return [element, descriptionText];
+}
+console.log(countAndDescribe(['gardening', 'reading', 'burgling']));
 //# sourceMappingURL=app.js.map
