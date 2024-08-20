@@ -1,4 +1,3 @@
-//write code
 import axios from 'axios';
 
 const form = document.querySelector('form')!;
