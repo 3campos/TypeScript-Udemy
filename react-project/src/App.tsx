@@ -3,8 +3,6 @@ import React from 'react';
 import TodoList from './components/TodoList';
 import NewTodo from './components/NewTodo';
 
-console.log(NewTodo)
-
 const App: React.FunctionComponent = props => {
   const todos = [{id: 't1', text: 'Finish the course'}];
 
