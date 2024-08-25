@@ -12,6 +12,12 @@ const App: React.FunctionComponent = props => {
     //"prevTodos =>" we pass this prevTodos function into setTodos to ensure that we receive the latest state update b/c react schedules state updates. this prevTodos function gets our previous todos (by using a spread operator for the latest state snapshot) and returns our new state.
   };
 
+  const todoDeleteHandler = (todoId: string) => {
+    setTodos(prevTodos => {
+      return prevTodos.filter(todo => todo.id !== todoId);
+    })
+  };
+
   return (
     <div className="App">
       <NewTodo onAddTodo={todoAddHandler}/>

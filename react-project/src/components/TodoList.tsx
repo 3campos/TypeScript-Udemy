@@ -7,7 +7,8 @@ interface TodoListProps {
 const TodoList: React.FC<TodoListProps> = props => {
     return <ul>
         {props.items.map(todo => (
-            <li key={todo.id}>{todo.text}</li>))}
+            <li key={todo.id}><span>{todo.text}</span></li>))}
+            <button onClick={}>DELETE</button>
     </ul>
 };
 
