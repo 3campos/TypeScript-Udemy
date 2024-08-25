@@ -7,4 +7,8 @@ const express_1 = __importDefault(require("express"));
 const todos_1 = __importDefault(require("./routes/todos"));
 const app = (0, express_1.default)();
 app.use('/todos', todos_1.default);
+app.use((err, req, res, next) => {
+    res.status(500).json({ message: err.message });
+});
+//the nextFunction is executed which will let the request continue its iteration to the next request in the queue
 app.listen(3000);
