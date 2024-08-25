@@ -21,7 +21,7 @@ const App: React.FunctionComponent = props => {
   return (
     <div className="App">
       <NewTodo onAddTodo={todoAddHandler}/>
-      <TodoList items={todos} />
+      <TodoList items={todos} onDeleteTodo={todoDeleteHandler}/>
     </div>
   );
 }
