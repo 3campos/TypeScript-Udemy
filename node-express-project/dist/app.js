@@ -8,6 +8,7 @@ const body_parser_1 = require("body-parser");
 const todos_1 = __importDefault(require("./routes/todos"));
 const app = (0, express_1.default)();
 app.use((0, body_parser_1.json)());
+// this json method parses bodies of incoming requests and extracts json data to populate the body key (see todos.ts) on the request object with the json data
 app.use('/todos', todos_1.default);
 app.use((err, req, res, next) => {
     res.status(500).json({ message: err.message });

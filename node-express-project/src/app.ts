@@ -7,6 +7,8 @@ const app = express();
 
 app.use(json());
 
+// this json method parses bodies of incoming requests and extracts json data to populate the body key (see todos.ts) on the request object with the json data
+
 app.use('/todos', todoRoutes);
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
