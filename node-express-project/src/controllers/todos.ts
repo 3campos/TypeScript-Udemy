@@ -36,3 +36,17 @@ export const updateTodo: RequestHandler<{id: string}> = (req, res, next) => {
     res.json({message: 'Updated!', updatedTodo: TODOS[todoIndex]})
     //updatedTodo is appended to the updated response and updtedTodo is set equal to the TODOS[todoIndex] which holds the updatedText value
 }
+
+export const deleteTodo: RequestHandler = (req, res, next) => {
+    const todoId = req.params.id;
+
+    const todoIndex = TODOS.findIndex(todo => todo.id === todoId);
+
+    if(todoIndex < 0) {
+        throw new Error('Could not find todo!');
+    }
+
+    TODOS.splice(todoIndex, 1);
+
+    res.json({message: 'Todo deleted!'})
+}
